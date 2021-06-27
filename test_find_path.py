@@ -91,7 +91,7 @@ class TestFindPath(unittest.TestCase):
 
     def test_find_path_going_left(self):
         space = (
-            (1, 2),
+            (2, 1),
         )
 
         from_position = (1, 0)
