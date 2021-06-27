@@ -72,6 +72,23 @@ class TestFindPath(unittest.TestCase):
             path
         )
 
+    def test_find_path_going_up(self):
+        space = (
+            (2,),
+            (1,)
+        )
+
+        from_position = (0, 1)
+        to_position = (0, 0)
+        path = find_path(space, from_position, to_position)
+
+        self.assertEqual(
+            (
+                (0, 0),
+            ),
+            path
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
