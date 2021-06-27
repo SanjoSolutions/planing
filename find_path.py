@@ -4,17 +4,20 @@ def find_path(space, from_position, to_position):
     ]
     paths = filter_goable_paths(space, paths)
     path_to_position = find_path_to_positions(to_position, paths)
-    while path_to_position is None:
+    while path_to_position is None and len(paths) >= 1:
         paths = expand_paths(space, paths)
         paths = filter_goable_paths(space, paths)
         path_to_position = find_path_to_positions(to_position, paths)
 
-    if len(path_to_position) > 1:
-        path_to_position = path_to_position[1:]
+    if path_to_position:
+        if len(path_to_position) > 1:
+            path_to_position = path_to_position[1:]
 
-    path_to_position = tuple(path_to_position)
+        path_to_position = tuple(path_to_position)
 
-    return path_to_position
+        return path_to_position
+    else:
+        return None
 
 
 def find_path_to_positions(position, paths):
