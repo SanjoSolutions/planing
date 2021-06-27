@@ -105,6 +105,20 @@ class TestFindPath(unittest.TestCase):
             path
         )
 
+    def test_find_path_zero_paths(self):
+        space = (
+            (1, 3, 2),
+        )
+
+        from_position = (0, 0)
+        to_position = (2, 0)
+        path = find_path(space, from_position, to_position)
+
+        self.assertEqual(
+            None,
+            path
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
