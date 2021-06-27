@@ -11,8 +11,8 @@ class TestFindPath(unittest.TestCase):
             (0, 0, 0, 2)
         )
 
-        from_position = (0, 0)
-        to_position = (3, 2)
+        from_position = determine_from_position(space)
+        to_position = determine_to_position(space)
         path = find_path(space, from_position, to_position)
 
         self.assertEqual(
@@ -33,8 +33,8 @@ class TestFindPath(unittest.TestCase):
             (0, 0, 0, 2)
         )
 
-        from_position = (0, 0)
-        to_position = (3, 2)
+        from_position = determine_from_position(space)
+        to_position = determine_to_position(space)
         path = find_path(space, from_position, to_position)
 
         self.assertEqual(
@@ -56,8 +56,8 @@ class TestFindPath(unittest.TestCase):
             (0, 0, 0, 2)
         )
 
-        from_position = (0, 0)
-        to_position = (3, 3)
+        from_position = determine_from_position(space)
+        to_position = determine_to_position(space)
         path = find_path(space, from_position, to_position)
 
         self.assertEqual(
@@ -78,8 +78,8 @@ class TestFindPath(unittest.TestCase):
             (1,)
         )
 
-        from_position = (0, 1)
-        to_position = (0, 0)
+        from_position = determine_from_position(space)
+        to_position = determine_to_position(space)
         path = find_path(space, from_position, to_position)
 
         self.assertEqual(
@@ -94,8 +94,8 @@ class TestFindPath(unittest.TestCase):
             (2, 1),
         )
 
-        from_position = (1, 0)
-        to_position = (0, 0)
+        from_position = determine_from_position(space)
+        to_position = determine_to_position(space)
         path = find_path(space, from_position, to_position)
 
         self.assertEqual(
@@ -110,14 +110,30 @@ class TestFindPath(unittest.TestCase):
             (1, 3, 2),
         )
 
-        from_position = (0, 0)
-        to_position = (2, 0)
+        from_position = determine_from_position(space)
+        to_position = determine_to_position(space)
         path = find_path(space, from_position, to_position)
 
         self.assertEqual(
             None,
             path
         )
+
+
+def determine_from_position(space):
+    return find_value(space, 1)
+
+
+def determine_to_position(space):
+    return find_value(space, 2)
+
+
+def find_value(space, value):
+    for y in range(len(space)):
+        for x in range(len(space[0])):
+            if space[y][x] == value:
+                return (x, y)
+    return None
 
 
 if __name__ == '__main__':
