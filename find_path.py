@@ -39,6 +39,8 @@ def expand_paths(space, paths):
             expanded_paths.append(path + [(x + 1, y)])
         if y + 1 < len(space):
             expanded_paths.append(path + [(x, y + 1)])
+        if x - 1 >= 0:
+            expanded_paths.append(path + [(x - 1, y)])
         if y - 1 >= 0:
             expanded_paths.append(path + [(x, y - 1)])
     return expanded_paths
